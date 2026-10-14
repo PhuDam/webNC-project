@@ -2,11 +2,17 @@ import { Controller, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  @Get('data')
+  @Get('data') 
   getData() {
-    return [
-      {name: 'Dam Gia Phu', id: 23010760, status: 'active',},
-      {name: 'Gia Phu', id: 123456, status: 'active',},
-    ]
-    };
+
+    const mockData = [];
+    for (let i = 1; i <= 25; i++) {
+      mockData.push({
+        id: i,
+        name: `User ${i} Doe`,
+        status: i % 2 === 0 ? "Inactive" : "Active"
+      });
+    }
+    return mockData;
   }
+}
